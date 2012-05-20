@@ -1,7 +1,7 @@
 # Conways game of life simulator
 there are lots of todoes to improve this program.
 
-![] (https://github.com/daogan/conways-game-of-life/raw/master/screenshot.png
+![] (https://github.com/daogan/conways-game-of-life/raw/master/screenshot.png)
 
 ## Usage
 
