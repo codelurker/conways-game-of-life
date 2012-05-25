@@ -1,17 +1,22 @@
 # Conways game of life simulator
-there are lots of todoes to improve this program.
 
 ![] (https://github.com/daogan/conways-game-of-life/raw/master/screenshot.png)
 
 ## Usage
 
-Use left mouse button to modify the state of a cell (alive or dead),
-when you are done, click middle button of the mouse to get the game started.
+Mouse click to toggle cell state, press <SPACE> to start or pause a running
+game, <d> to set a random inititial state with random probability whether a 
+cell should be 'dead' or 'alive', number key <1> to <9> also set the state
+to be random, but with defined probability whether a cell should be 'dead' or 
+'alive', ie, <4> set about 40 percent of the cells to be alive.
 
 ## license
 
 This content is released under the 
 [MIT license](http://www.opensource.org/licenses/mit-license.php).
+
+## TODO
+Load pre-defined state
 
 &copy; 2012 Daogan Ao &lt;wvvwwwvvvv@gmail.com&gt;
 
