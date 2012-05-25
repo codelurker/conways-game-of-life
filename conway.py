@@ -53,7 +53,7 @@ class Game(object):
         self.colorUnfill = (255, 255, 255)
         # state of the cells is stored in matrix
         self.matrix = []
-        # restore the state of the next generation
+        # store the state of the next generation
         self.next_matrix = []
         # row and col are the dimension of the matrix
         self.row = (self.height - self.offset_x - 
@@ -185,6 +185,8 @@ class Game(object):
     def run(self):
 
         sz = self.gridSize + 1
+        mouse_down = False
+
         while True:
             # make it 30 frame per second
             self.clock.tick(30)
@@ -196,25 +198,31 @@ class Game(object):
 
                 elif event.type == pygame.KEYDOWN:
                     self.handle_keyboard(event)
+                elif event.type == pygame.MOUSEBUTTONUP:
+                    mouse_down = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     # event outside the cell borders, ignore it
                     if (x > self.width - self.offset_x 
                         or y > self.height - self.offset_x
                         or x < self.offset_x or y < self.offset_y):
                         continue
-                    # get the corresponding matrix index
-                    idx_x = (x - self.offset_x) / sz
-                    idx_y = (y - self.offset_y) / sz
-                    rect = (x / sz * sz + 1, y / sz * sz + 1, 
-                        self.gridSize, self.gridSize)
-                    # flip the cell state
-                    if self.matrix[idx_y][idx_x] == True:
-                        pygame.draw.rect(self.screen, self.colorUnfill, rect)
-                        self.matrix[idx_y][idx_x] = False
                     else:
-                        pygame.draw.rect(self.screen, self.colorFill, rect)
-                        self.matrix[idx_y][idx_x] = True
-                    pygame.display.flip()
+                        mouse_down = True
+
+            if mouse_down == True:
+                # get the corresponding matrix index
+                idx_x = (x - self.offset_x) / sz
+                idx_y = (y - self.offset_y) / sz
+                rect = (x / sz * sz + 1, y / sz * sz + 1, 
+                    self.gridSize, self.gridSize)
+                # flip the cell state
+                if self.matrix[idx_y][idx_x] == True:
+                    pygame.draw.rect(self.screen, self.colorUnfill, rect)
+                    self.matrix[idx_y][idx_x] = False
+                else:
+                    pygame.draw.rect(self.screen, self.colorFill, rect)
+                    self.matrix[idx_y][idx_x] = True
+                pygame.display.flip()
 
     def next_gen(self):
 
@@ -246,7 +254,7 @@ class Game(object):
                 # replace the previous generation of the new generation
                 #self.matrix[r][c] = new_matrix[r][c]
 
-                rect = (c * (self.gridSize + 1)  + self.offset_x+ 1, 
+                rect = (c * (self.gridSize + 1)  + self.offset_x + 1, 
                     r * (self.gridSize + 1) + self.offset_y + 1, 
                     self.gridSize, self.gridSize)
                 if self.matrix[r][c] == True:
