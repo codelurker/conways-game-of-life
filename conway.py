@@ -131,8 +131,8 @@ class Game(object):
             y += 10
             
     def random_state(self, mode):
-        # the probablity whether a cell is initially alive
-        probablity = [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+        # the probability whether a cell is initially alive
+        probability = [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 
         if mode == 0:
             idx = int(random.random() * 10)
@@ -141,7 +141,7 @@ class Game(object):
 
         for r in xrange(self.row):
             for c in xrange(self.col):
-                if probablity[idx] > random.random():
+                if probability[idx] > random.random():
                     self.matrix[r][c] = True
                 else:
                     self.matrix[r][c] = False
@@ -159,11 +159,11 @@ class Game(object):
             self.conway()
         elif event.key == pygame.K_q:
             pygame.quit()
-        # set random probablity
+        # set random probability
         elif event.key == pygame.K_d:
             self.random_state(0)
             self.print_state()
-        # set defined probablity
+        # set defined probability
         elif event.key >= pygame.K_1 and event.key <= K_9:
             self.random_state(int(event.key - K_1 + 1))
             self.print_state()

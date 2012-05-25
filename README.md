@@ -5,18 +5,19 @@
 ## Usage
 
 Mouse click to toggle cell state, press <SPACE> to start or pause a running
-game, <d> to set a random inititial state with random probability whether a 
-cell should be 'dead' or 'alive', number key <1> to <9> also set the state
-to be random, but with defined probability whether a cell should be 'dead' or 
-'alive', ie, <4> set about 40 percent of the cells to be alive.
-
-## license
-
-This content is released under the 
-[MIT license](http://www.opensource.org/licenses/mit-license.php).
+game, <r> to reset the game, <d> to set a random inititial state with random 
+probability whether a  cell should be 'dead' or 'alive', number key <1> to <9> 
+also set the state to be random, but with defined probability whether a cell 
+should be 'dead' or 'alive', ie, <4> set about 40 percent of the cells to be 
+alive.
 
 ## TODO
 Load pre-defined state
+
+## License
+
+This content is released under the 
+[MIT license](http://www.opensource.org/licenses/mit-license.php).
 
 &copy; 2012 Daogan Ao &lt;wvvwwwvvvv@gmail.com&gt;
 
