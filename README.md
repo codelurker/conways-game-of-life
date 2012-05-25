@@ -4,11 +4,12 @@
 
 ## Usage
 
-Mouse click to toggle cell state, press <SPACE> to start or pause a running
-game, <r> to reset the game, <d> to set a random inititial state with random 
-probability whether a  cell should be 'dead' or 'alive', number key <1> to <9> 
-also set the state to be random, but with defined probability whether a cell 
-should be 'dead' or 'alive', ie, <4> set about 40 percent of the cells to be 
+Mouse click to toggle cell state, press &lt;SPACE&gt; to start or pause a 
+running game, &lt;r&gt; to reset the game, &lt;d&gt; to set a random inititial 
+state with random probability whether a  cell should be 'dead' or 'alive', 
+number key &lt;1&gt; to &lt;9&gt; also set the state to be random, but with 
+defined probability whether a cell should be 'dead' or 'alive', ie, &lt;4&gt; 
+set about 40 percent of the cells to be 
 alive.
 
 ## TODO
