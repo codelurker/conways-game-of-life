@@ -1,4 +1,4 @@
-# Conways game of life simulator
+# Conway's game of life simulator
 
 ![] (https://github.com/daogan/conways-game-of-life/raw/master/screenshot.png)
 
