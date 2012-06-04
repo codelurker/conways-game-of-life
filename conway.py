@@ -186,11 +186,12 @@ class Game(object):
 
         sz = self.gridSize + 1
         mouse_down = False
+        mouse_up = True
+        last_rect = pygame.Rect(0, 0, 0, 0)
 
         while True:
             # make it 30 frame per second
             self.clock.tick(30)
-            x, y = pygame.mouse.get_pos()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -200,21 +201,30 @@ class Game(object):
                     self.handle_keyboard(event)
                 elif event.type == pygame.MOUSEBUTTONUP:
                     mouse_down = False
+                    mouse_up = True
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    # event outside the cell borders, ignore it
-                    if (x > self.width - self.offset_x 
-                        or y > self.height - self.offset_x
-                        or x < self.offset_x or y < self.offset_y):
-                        continue
-                    else:
-                        mouse_down = True
+                    mouse_down = True
 
             if mouse_down == True:
+
+                x, y = pygame.mouse.get_pos()
+                # event outside the cell borders, ignore it
+                if (x > self.width - self.offset_x 
+                    or y > self.height - self.offset_x
+                    or x < self.offset_x or y < self.offset_y):
+                    continue
+                if not mouse_up and last_rect.collidepoint(x, y):
+                    continue
+                mouse_up = False
+
                 # get the corresponding matrix index
                 idx_x = (x - self.offset_x) / sz
                 idx_y = (y - self.offset_y) / sz
-                rect = (x / sz * sz + 1, y / sz * sz + 1, 
-                    self.gridSize, self.gridSize)
+                off_x = x / sz * sz
+                off_y =  y / sz * sz
+                rect = (off_x + 1, off_y + 1, self.gridSize, self.gridSize)
+                # this rectangle is one pixel bigger
+                last_rect = pygame.Rect(off_x, off_y, sz, sz)
                 # flip the cell state
                 if self.matrix[idx_y][idx_x] == True:
                     pygame.draw.rect(self.screen, self.colorUnfill, rect)
